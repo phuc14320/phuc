@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <%- include ('../template/head', { title: title } ); %>
+        </head>
+        <body>
+
+            <header>
+                <%- include ('../template/header', { username: null, configHeader: configHeader, currpage : currpage  }); %>
+            </header>
+
+            <main>
+                <div class="container" >
+                    <H3>Các hàng hóa có trong giỏ hàng:</H3>
+                    <BR>
+                    <div class="table-responsive-lg table-striped  w-auto">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>#Mã</th>
+                                <th>Hình ảnh</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Giá tiền</th>
+                                <th>Tổng cộng</th>
+                                <th>Check If want to buy</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                        
+                            <form action="/payment" method="GET">
+                                <%Object.keys(itemlist).forEach(function(item) { %>
+                                    <tr style="vertical-align:middle;align-items: center ;">
+                                        <td style="vertical-align:middle;align-items: center ;"><%=itemlist[item].id%></td>
+                                        <input style="display: none;" type="text" name="id" value="<%=itemlist[item].id%>">
+                                        <td> 
+                                            <img class="card-img-top center" style="max-width:60px;max-height:60px;" src="/images/<%=itemlist[item].id%>.jpg" alt="Card image cap">
+                                            <input style="display: none;" type="text" name="img" value="<%=itemlist[item].id%>">
+                                        </td>
+                                        <td style="vertical-align:middle;align-items: center ;"><%=itemlist[item].name%></td>
+                                        <input style="display: none;" type="text" name="name" value="<%=itemlist[item].name%>">
+                                        <td style="vertical-align:middle;align-items: center ;"><%=itemlist[item].number%></td>
+                                        <input style="display: none;" type="text" name="soluong" value="<%=itemlist[item].number%>">
+                                        <td style="vertical-align:middle;align-items: center ;"><%=itemlist[item].price%></td>
+                                        <input style="display: none;" type="text" name="pricee" value="<%=itemlist[item].price%>">
+                                        
+                                        <%const thanhtien = itemlist[item].price * itemlist[item].number%>
+                                        <td style="vertical-align:middle;align-items: center ;"><%=thanhtien%></td>
+                                        <td><input style="margin-top: 22px;margin-left: 50px;display: none" type="text" name="price" value="<%=thanhtien%>"></td>
+                                        <td><input style="margin-top: 22px;margin-left: -190px;" type="checkbox" name="all" value="<%=itemlist[item].id%>,<%=itemlist[item].name%>,<%=itemlist[item].number%>,<%=itemlist[item].price%>,<%=thanhtien%>"></td>
+                                    </tr>     
+                                <% }); %>
+
+                                <button style="position: absolute;margin-top: 420px;margin-left: 1010px;" name="all">Thanh toán</button>
+                            </form>
+                            
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </main>
+            
+            
+            <%- include ('../template/footer'); %>
+
+
+        </body>
+
+    </html>

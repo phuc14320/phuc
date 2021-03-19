@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include ('../template/head', { title: title } ); %>
+    </head>
+    <body>
+
+        <header>
+            <%- include ('../template/header', { username: null , configHeader:configHeader, currpage : currpage  }); %>
+        </header>
+
+        <main>
+    <form action='/report' method='GET' style="background-image: url();background-color: white;padding-bottom:10px;padding-right:50px;padding-left:100px;width: 1520px;height: 635px;border: 1px solid gainsboro;margin-top: 5px;margin-left:10px;">
+           <div class="main" style="display: block;">
+            <%alls.slice(1,).forEach(myFunction);%>
+            <%function myFunction(item) {%>
+              <%a = item.split(',');%>
+              <td>Mã sản phẩm:<%=a[0]%></td> </br>
+              <label>Hình ảnh: </label></br>
+              <td><img class="card-img-top center" style="max-width:100px;max-height:70px;" src="/images/<%=a[0]%>.jpg" alt="Card image cap"></td></br>
+              <labe>Sản phẩm :<%=a[1]%></label></br>
+              <label style="margin-top: 10px;">Giá sản phẩm :<%=a[3]%></label></br>
+              <label>Số lượng :<%=a[2]%></label></br>
+              <label>Số tiền :<%=a[4]%></label></br>
+
+            <%}%>  
+            <%sum = 0;i = 0%>
+            <% alls.slice(1,).forEach(function(i){%>
+                <%c = i.split(',');%>
+                <%n = Number.parseInt(c[4])%>
+                <%sum += n;%>
+                <% }); %>
+                <h4>Tổng: <%=sum%></h4>
+            </br>
+           </div>
+           <div class="container" style="width: 800px;height: 400px;;margin-top: -450px;margin-left: 300px;background-color:cyan;">
+            <div class='form-group'>
+                <label>Ngân hàng</label> 
+                <select style="width: 200px;" class='form-control' id='bankCode' name='bankCode'>
+                    <option value=''>Không chọn</option> 
+                    <option value='VNPAYQR'>Ngân hàng VNPAYQR</option> 
+                    <option value='NCB'>Ngân hàng NCB</option> 
+                    <option value='SCB'>Ngân hàng SCB</option> 
+                    <option value='SACOMBANK'>Ngân hàng SACOMBANK</option> 
+                    <option value='EXIMBANK'>Ngân hàng EXIMBANK</option> 
+                    <option value='MSBANK'>Ngân hàng MSBANK</option> 
+                    <option value='NAMABANK'>Ngân hàng NAMABANK</option> 
+                    <option value='VISA'>Ngân hàng VISA</option> 
+                    <option value='VNMART'>Ngân hàng VNMART</option> 
+                    <option value='VIETINBANK'>Ngân hàng VIETINBANK</option> 
+                    <option value='VIETCOMBANK'>Ngân hàng VIETCOMBANK</option> 
+                    <option value='HDBANK'>Ngân hàng HDBANK</option> 
+                    <option value='DONGABANK'>Ngân hàng Dong A</option> 
+                    <option value='TPBANK'>Ngân hàng Tp Bank</option> 
+                    <option value='OJB'>Ngân hàng OceanBank</option> 
+                    <option value='BIDV'>Ngân hàng BIDV</option> 
+                    <option value='TECHCOMBANK'>Ngân hàng Techcombank</option> 
+                    <option value='VPBANK'>Ngân hàng VPBank</option> 
+                    <option value='AGRIBANK'>Ngân hàng AGRIBANK</option> 
+                    <option value='MBBANK'>Ngân hàng MBBank</option> 
+                    <option value='ACB'>Ngân hàng ACB</option> 
+                    <option value='OCB'>Ngân hàng OCB</option> 
+                    <option value='SHB'>Ngân hàng SHB</option> 
+                    <option value='IVB'>Ngân hàng IVB</option> 
+                    </select>
+                    <img style="border: 1px solid gainsboro;margin-top: 10px;margin-right: 10px;width: 100px;height:100px;" src="https://vnpay.vn/wp-content/uploads/2019/04/Banner-cong-thanh-toan-VNPAYQR.png">
+                    <img style="border: 1px solid gainsboro;margin-top: 10px;margin-right: 10px;width: 100px;height:100px;" src="https://upload.wikimedia.org/wikipedia/vi/8/85/ACB_Logo.png">
+                    <img style="border: 1px solid gainsboro;margin-top: 10px;margin-right: 10px;width: 100px;height:100px;" src="https://upload.wikimedia.org/wikipedia/vi/7/7c/Techcombank_logo.png">
+                    <img style="border: 1px solid gainsboro;margin-top: 10px;margin-right: 10px;width: 100px;height:100px;" src="https://static.ybox.vn/2017/6/23/0fcc923c-57ec-11e7-a5c2-2e995a9a3302.jpg">
+                    <img style="border: 1px solid gainsboro;margin-top: 10px;margin-right: 10px;width: 100px;height:100px;" src="https://www.hdbank.com.vn/static/image/Logo.png">
+
+                    
+           
+            <button class='btn.btn-default' id='btnPopup' type='submit'><a style="margin-top: -100px;text-decoration: none;" href="/">Thanh toán</a></button> 
+            </div>
+                </div>
+           
+                
+            
+            <script>
+                $(document).ready(function(){
+                    $('button').click(function(){
+                        alert('Bạn đã thanh toán thành công!!! ' + 'Với Giá Của Sản Phẩm Là: ' + "<%=sum%>");
+                })
+                })
+                
+            </script>
+            
+            </div>
+            
+                </form>
+            </main>
+          
+        
+            <%- include ('../template/footer'); %>
+        </body>
+</html>

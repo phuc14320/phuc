@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include ('../template/head', { title: title } ); %>
+    </head>
+    <body>
+
+        <header>
+            <%- include ('../template/header', { username: null, configHeader:configHeader, currpage : currpage  }); %>
+        </header>
+
+        <main>
+            <div class="container" >
+                
+
+                <H3> Create a Report: </H3>
+		
+                <form action="/report" enctype="multipart/form-data" method="get">
+
+
+                    <!-- name -->
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp">
+                        <small id="nameHelp" class="form-text text-muted"></small>
+                    </div>
+
+                    <!-- vị trí -->
+                    <div class="form-group">
+                        <label for="chucvu">Chức Vụ</label>
+                        <input type="text" class="form-control" id="chucvu" name="chucvu" aria-describedby="chucvuHelp">
+                        <small id="chucvuHelp" class="form-text text-muted"> Chức Vụ </small>
+                    </div>
+
+                    <!-- chinhanh -->
+                    <div class="form-group">
+                        <label for="chinhanh">Chi Nhánh </label>
+                        <input type="text" class="form-control" id="chinhanh" name="chinhanh" aria-describedby="chinhanhHelp">
+                        <small id="chinhanhHelp" class="form-text text-muted">Chi Nhánh </small>
+                    </div>
+                    <!-- san pham ban chay -->
+                    <div class="form-group">
+                        <label for="banchay">Sản Phẩm Bán Chạy </label>
+                        <input type="text" class="form-control" id="banchay" name="banchay" aria-describedby="banchayHelp">
+                        <small id="banchayHelp" class="form-text text-muted">  </small>
+                    </div>
+
+                    <!-- doanhthu -->
+                    <div class="form-group">
+                        <label for="doanhthu">Doanh Thu </label>
+                        <input type="number" class="form-control" id="doanhthu" name="doanhthu" aria-describedby="doanhthuHelp">
+                        <small id="doanhthuHelp" class="form-text text-muted"> </small>
+                    </div>
+
+                    
+
+                    <button type="submit" class="btn btn-primary">Submit report successfully !</button>
+                </form>
+            </div>
+            <BR>
+            <BR>
+        </main>
+          
+        
+        <%- include ('../template/footer'); %>
+        
+
+    </body>
+
+</html> 
