@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 
-const PORT = 8080;
+app.listen(process.env.PORT ||8080);
 
 app.get('/', homePage );
 function homePage(req,res){
@@ -32,10 +32,5 @@ app.get('/order/payment', paymentPage );
 function paymentPage(req,res){
     res.send("Payment Page!");
 }
-app.listen(PORT, 
-    () => {
-      console.log("Server running! ");
-  }
-  );
   ////
 
